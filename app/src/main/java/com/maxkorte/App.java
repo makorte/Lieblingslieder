@@ -8,19 +8,30 @@ public class App {
 
     public static void main(String[] args) {
         nutzer = initNutzer();
-        printLieder();
-
-        int userAction = getUserAction();
-        switch (userAction){
-            case 1: addLied();
-            case 2: removeLied();
-            case 3: removeAll();
-            case 9: exit();
-            default: System.out.println("Fehler");
+        
+        boolean running = true;
+        while(running){ // TODO: 16.04.21 maybe change while loop (to be tested) 
+            printLieder();
+            
+            int userAction = getUserAction();
+            switch (userAction){    // TODO: 16.04.21 implement in while loop 
+                case 1: addLied();
+                case 2: removeLied();
+                case 3: removeAll();
+                case 9: {
+                    running = false;
+                    exit();
+                }
+                default: System.out.println("Fehler");
+            }
         }
     }
 
     public static void addLied(){
+        if (nutzer.getLieder().equals("")){
+            System.out.println("Keine Lieder vorhanden");
+        }
+        
         // TODO: 16.04.21 implement 
     }
 
@@ -29,7 +40,9 @@ public class App {
     }
 
     public static void removeAll(){
-        // TODO: 16.04.21 implement 
+        System.out.println("Es werden alle Lieblingslieder gelöscht...");
+        nutzer.entferneLieder();
+        return true;
     }
 
     public static void exit(){
