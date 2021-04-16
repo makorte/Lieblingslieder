@@ -17,11 +17,13 @@ public class Nutzer {
     }
 
     String getLieder(){
-        StringBuilder output = new StringBuilder("Deine Lieblingslieder:");
+        StringBuilder output = new StringBuilder();
+
         for(int i = 0; i < lieblingslieder.size(); i++){
             Lied l = lieblingslieder.get(i);
-            output.append("\n ").append(i).append(": ").append(l.getInterpret()).append(" - ").append(l.getTitel());
+            output.append(i + 1).append(": ").append(l.getInterpret()).append(" - ").append(l.getTitel()).append("\n");
         }
+
         return output.toString();
     }
 
