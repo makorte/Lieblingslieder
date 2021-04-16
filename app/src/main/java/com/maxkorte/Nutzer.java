@@ -16,12 +16,8 @@ public class Nutzer {
         lieblingslieder.add(lied);
     }
 
-    Lied getLied(int i){
-        return lieblingslieder.get(i);
-    }
-
     String getLieder(){
-        StringBuilder output = new StringBuilder("nutzername's Lieblingslieder:");
+        StringBuilder output = new StringBuilder("Deine Lieblingslieder:");
         for(int i = 0; i < lieblingslieder.size(); i++){
             Lied l = lieblingslieder.get(i);
             output.append("\n ").append(i).append(": ").append(l.getInterpret()).append(" - ").append(l.getTitel());
@@ -29,11 +25,16 @@ public class Nutzer {
         return output.toString();
     }
 
-    boolean entferneLied(Lied lied){
+    Lied getLied(int i){
+        return lieblingslieder.get(i);
+    }
+
+    boolean entferneLied(int i){
         try{
+            Lied lied = getLied(i);
             lieblingslieder.remove(lied);
             return true;
-        } catch(Exception e){
+        } catch(IndexOutOfBoundsException e){
             return false;
         }
     }

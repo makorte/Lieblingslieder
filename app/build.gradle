@@ -13,7 +13,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.maxkorte.Lieblingslieder'
+    mainClass = 'com.maxkorte.App'
 }
 
 tasks.named('test') {
