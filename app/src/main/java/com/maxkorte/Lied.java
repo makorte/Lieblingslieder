@@ -34,9 +34,6 @@ public class Lied {
 
     @Override
     public String toString() {
-        return "Lied{" +
-                "titel='" + titel + '\'' +
-                ", interpret='" + interpret + '\'' +
-                '}';
+        return  interpret +  " - " + titel;
     }
 }

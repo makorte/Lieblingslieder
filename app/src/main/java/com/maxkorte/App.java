@@ -14,7 +14,7 @@ public class App {
             printLieder();
             
             int userAction = getUserAction();
-            switch (userAction){    // TODO: 16.04.21 implement in while loop 
+            switch (userAction){
                 case 1: addLied();
                 case 2: removeLied();
                 case 3: removeAll();
@@ -28,21 +28,43 @@ public class App {
     }
 
     public static void addLied(){
-        if (nutzer.getLieder().equals("")){
-            System.out.println("Keine Lieder vorhanden");
-        }
-        
-        // TODO: 16.04.21 implement 
+        System.out.print("Gib den Titel des Liedes ein: ");
+        String titel = sc.next();
+        System.out.print("Gib den Interpret des Liedes ein: ");
+        String interpret = sc.next();
+
+        Lied hinzugefuegtesLied = new Lied(titel, interpret);
+
+        nutzer.addLied(hinzugefuegtesLied);
+
+        System.out.println(hinzugefuegtesLied + " wurde hinzugefügt!");
     }
 
     public static void removeLied(){
-        // TODO: 16.04.21 implement 
+        if (nutzer.getLieder().equals("")){
+            System.out.println("Keine Lieder vorhanden");
+            return;
+        }
+
+        boolean running = true;
+        while(running){
+            nutzer.getLieder();
+            System.out.print("Gib die Nummer des zu Löschenden Lieds an: ");
+            try{
+                int userInput = (sc.nextInt() - 1);
+                Lied entferntesLied = nutzer.getLied(userInput);
+                nutzer.entferneLied(userInput);
+                System.out.println(entferntesLied + " wurde gelöscht!");
+                running = false;
+            } catch (Exception e){
+                System.out.println("Falsche Eingabe!");
+            }
+        }
     }
 
     public static void removeAll(){
         System.out.println("Es werden alle Lieblingslieder gelöscht...");
         nutzer.entferneLieder();
-        return true;
     }
 
     public static void exit(){
@@ -53,24 +75,23 @@ public class App {
     public static int getUserAction(){
         int input = 0;
 
-        boolean running;
-        do {
-            System.out.println("1: Lied hinzufügen, 2: Lied entfernen, 3: alle Lieder entfernen, 9: Beenden");
-            try{
+        boolean running = true;
+        while (running) {
+            System.out.print("1: Lied hinzufügen, 2: Lied entfernen, 3: alle Lieder entfernen, 9: Beenden");
+            try {
                 input = sc.nextInt();
-                if(input < 1 || (input > 3 && input < 9) || input > 9) throw new Exception();
+                if (input < 1 || (input > 3 && input < 9) || input > 9) throw new Exception();
                 running = false;
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Falsche Eingabe!");
-                running = true;
             }
-        } while (running);
+        }
 
         return input;
     }
 
     public static Nutzer initNutzer(){
-        System.out.println("Gib einen (deinen) Nutzernamen ein: ");
+        System.out.print("Gib einen (deinen) Nutzernamen ein: ");
         String nutzernameIn = sc.next();
         Nutzer nutzer;
         try{

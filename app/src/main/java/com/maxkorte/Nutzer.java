@@ -21,7 +21,7 @@ public class Nutzer {
 
         for(int i = 0; i < lieblingslieder.size(); i++){
             Lied l = lieblingslieder.get(i);
-            output.append(i + 1).append(": ").append(l.getInterpret()).append(" - ").append(l.getTitel()).append("\n");
+            output.append(i + 1).append(": ").append(l);
         }
 
         return output.toString();
