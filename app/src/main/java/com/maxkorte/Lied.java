@@ -7,6 +7,10 @@ public class Lied {
     private final String interpret;
 
     Lied(String titel, String interpret) {
+        if(titel == null || interpret == null){
+            throw new IllegalArgumentException("Argumente dürfen nicht null sein!");
+        }
+
         this.titel = titel;
         this.interpret = interpret;
     }

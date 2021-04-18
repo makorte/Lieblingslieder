@@ -17,6 +17,10 @@ public class LiedTest {
     void testLied() {
         Assertions.assertEquals("Haus am See", lied.getTitel());
         Assertions.assertEquals("Peter Fox", lied.getInterpret());
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Lied(null, "a"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Lied("a", null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Lied(null, null));
     }
 
     @Test

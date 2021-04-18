@@ -5,14 +5,18 @@ import java.util.Objects;
 
 public class Nutzer {
     private final String nutzername;
-    private final ArrayList<Lied> lieblingslieder;
+    protected final ArrayList<Lied> lieblingslieder;
 
     Nutzer(String nutzername) {
+        if(nutzername == null) throw new IllegalArgumentException("Argumente dürfen nicht null sein!");
+
         this.nutzername = nutzername;
         lieblingslieder = new ArrayList<>();
     }
 
     void addLied(Lied lied) {
+        if(lied == null) throw new IllegalArgumentException("Argumente dürfen nicht null sein!");
+
         lieblingslieder.add(lied);
     }
 
@@ -21,7 +25,7 @@ public class Nutzer {
 
         for(int i = 0; i < lieblingslieder.size(); i++){
             Lied l = lieblingslieder.get(i);
-            output.append(i + 1).append(": ").append(l);
+            output.append(i + 1).append(": ").append(l).append("\n");
         }
 
         return output.toString();
