@@ -77,7 +77,7 @@ public class App {
 
         boolean running = true;
         while (running) {
-            System.out.print("1: Lied hinzufügen, 2: Lied entfernen, 3: alle Lieder entfernen, 9: Beenden");
+            System.out.print("1: Lied hinzufügen, 2: Lied entfernen, 3: alle Lieder entfernen, 9: Beenden: ");
             try {
                 input = sc.nextInt();
                 if (input < 1 || (input > 3 && input < 9) || input > 9) throw new Exception();

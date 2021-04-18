@@ -54,7 +54,7 @@ public class NutzerTest {
 
     @Test
     void testGetLied() {
-        Assertions.assertThrows(NullPointerException.class, () -> nutzer.getLied(0));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> nutzer.getLied(0));
 
         addLieder();
         Assertions.assertEquals(lieder[1], nutzer.getLied(1));
@@ -64,7 +64,6 @@ public class NutzerTest {
     void testEntferneLied() {
         addLieder();
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> nutzer.entferneLied(2));
         Assertions.assertDoesNotThrow(() -> nutzer.entferneLied(1));
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> nutzer.lieblingslieder.get(1));
     }
