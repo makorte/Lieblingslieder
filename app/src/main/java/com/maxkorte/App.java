@@ -15,9 +15,9 @@ public class App {
             
             int userAction = getUserAction();
             switch (userAction){
-                case 1: addLied();
-                case 2: removeLied();
-                case 3: removeAll();
+                case 1: addLied(); break;
+                case 2: removeLied(); break; 
+                case 3: removeAll(); break;
                 case 9: {
                     running = false;
                     exit();
@@ -37,12 +37,12 @@ public class App {
 
         nutzer.addLied(hinzugefuegtesLied);
 
-        System.out.println(hinzugefuegtesLied + " wurde hinzugefügt!");
+        System.out.println(hinzugefuegtesLied + " wurde hinzugefügt!\n");
     }
 
     public static void removeLied(){
         if (nutzer.getLieder().equals("")){
-            System.out.println("Keine Lieder vorhanden");
+            System.out.println("Keine Lieder vorhanden\n");
             return;
         }
 
@@ -54,16 +54,16 @@ public class App {
                 int userInput = (sc.nextInt() - 1);
                 Lied entferntesLied = nutzer.getLied(userInput);
                 nutzer.entferneLied(userInput);
-                System.out.println(entferntesLied + " wurde gelöscht!");
+                System.out.println(entferntesLied + " wurde gelöscht!\n");
                 running = false;
             } catch (Exception e){
-                System.out.println("Falsche Eingabe!");
+                System.out.println("Falsche Eingabe!\n");
             }
         }
     }
 
     public static void removeAll(){
-        System.out.println("Es werden alle Lieblingslieder gelöscht...");
+        System.out.println("Es werden alle Lieblingslieder gelöscht...\n");
         nutzer.entferneLieder();
     }
 
@@ -83,7 +83,7 @@ public class App {
                 if (input < 1 || (input > 3 && input < 9) || input > 9) throw new Exception();
                 running = false;
             } catch (Exception e) {
-                System.out.println("Falsche Eingabe!");
+                System.out.println("Falsche Eingabe!\n");
             }
         }
 

@@ -18,6 +18,4 @@ public class Lieblingslieder {
         }
         throw new IllegalArgumentException("Ein Nutzer mit diesem Nutzername existiert nicht!");
     }
-
-
 }
