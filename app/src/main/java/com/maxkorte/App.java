@@ -10,7 +10,7 @@ public class App {
         nutzer = initNutzer();
         
         boolean running = true;
-        while(running){ // TODO: 16.04.21 maybe change while loop (to be tested) 
+        while(running){
             printLieder();
             
             int userAction = getUserAction();
